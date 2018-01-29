@@ -1,0 +1,12 @@
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'backoffice/style.css' %}" />
+
+{% if user_list %}
+    <ul>
+    {% for user in user_list %}
+        <li><a href="{% url 'backoffice:user' user.id %}">{{ user.id }}</a></li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <p>No polls are available.</p>
+{% endif %}

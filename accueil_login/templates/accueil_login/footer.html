@@ -1,0 +1,68 @@
+{% load static %}
+<head>
+    <link rel="stylesheet" href="{% static 'accueil_login/CSS/footer.css' %}">
+</head>
+<footer>
+
+     <div class="container">
+       <div class="row">
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                  <div class="container">
+                    <div class="d-flex justify-content-between">
+                      <div class="p-1">
+                      </div>
+                      <div>
+                            <img src="{% static 'accueil_login/images/logo_eisti.png' %}"  style="background-color: white;" width="60px" height="80px" class="mb-3">
+                  <img src="{% static 'accueil_login/images/logo.png' %}" width="80px" height="80px" class="d-inline-block align-top ml-2" alt="" style="background-color: white;">
+
+                      </div>
+                      <div class="p-1">
+
+                      </div>
+                    </div>
+
+                  </div>
+                  <p class="descriptif">Stats Eisti est un site permettant de faire des statistiques sur les élèves de l'école d'Ingénieur EISTI. </p>
+                  <p class="descriptif">© 2017-2018 Stats Eisti </p>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                    <ul class="menu">
+                         <span>Menu</span>
+                         <li>
+                            <a href="{% url 'statistiques:menu_stats' %}">Statistiques</a>
+                          </li>
+
+                          <li>
+                             <a href="{% url 'email' %}">Nous contacter</a>
+                          </li>
+
+                          <li>
+                            <a href="{% url 'apropos' %}">A propos</a>
+                          </li>
+                     </ul>
+                </div>
+
+                <div class="col-md-4 col-sm-6 col-xs-12">
+                  <ul class="langues">
+                        <span>Langues</span>
+                        <li>
+                          <img src="{% static 'accueil_login/images/france.png' %}" width="25px" height="25px">
+                           <i class="fa fa-phone" aria-hidden="true"></i> <a href="#">Français</a>
+                        </li>
+                        <li>
+                          <img src="{% static 'accueil_login/images/united-kingdom.png' %}" width="25px" height="25px">
+                           <i class="fa fa-map-marker" aria-hidden="true"></i> <a href="#">Anglais</a>
+                        </li>
+                        <li>
+                          <img src="{% static 'accueil_login/images/spain.png' %}" width="25px" height="25px">
+                           <i class="fa fa-envelope" aria-hidden="true"></i> <a href="#">Espagnol</a>
+                        </li>
+                   </ul>
+               </div>
+
+
+           </div>
+        </div>
+    </footer>

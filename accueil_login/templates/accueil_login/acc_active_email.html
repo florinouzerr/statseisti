@@ -1,0 +1,5 @@
+{% autoescape off %}
+Bonjour {{ user.username }},
+Veuillez cliquer sur ce lien pour confirmer votre inscription sur Stats Eisti,
+http://{{ domain }}{% url 'activate' uidb64=uid token=token %}
+{% endautoescape %}

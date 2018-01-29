@@ -1,0 +1,572 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Importation BDD</title>
+  <!-- UIkit CSS -->
+   <!--<link rel="stylesheet" type="text/css" href="{% static 'importationfichier/CSS/uikit.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'importationfichier/CSS/index.css' %}" />
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+
+  <script src="{% static 'importationfichier/JS/uikit.min.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.35/js/uikit-icons.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+ 
+  <script src="{% static 'importationfichier/JS/uikit-icons.min.js' %}"></script>
+    -->
+    <link rel="stylesheet" type="text/css" href="{% static 'importationfichier/CSS/index.css' %}" />
+  <script src="{% static 'importationfichier/JS/index.js' %}"></script>
+  <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'importationfichier/bootstrap/css/bootstrap.css' %}">
+  <script src="{% static 'importationfichier/bootstrap/js/jquery.js' %}"></script>
+  <script src="{% static 'importationfichier/bootstrap/js/bootstrap.js' %}"></script>
+
+  </head>
+  <style>
+body {
+    font-family: "Lato", sans-serif;
+    transition: background-color .5s;
+}
+
+</style>
+  <style type="text/css">
+    body {
+      font-family: 'Maven Pro', sans-serif;
+    }
+  </style>
+
+<style class="cp-pen-styles">
+body {
+  overflow-y: scroll;
+}
+
+.accordion-panel {
+  margin: 20px auto;
+  max-width: 90%;
+}
+.accordion-panel .accordion {
+  padding-top: 30px;
+}
+.accordion-panel .accordion dt {
+  display: block;
+  padding: 25px;
+  background: #E3E1E2;
+  color: #555;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+}
+.accordion-panel .accordion dd {
+  height: 0;
+  overflow: hidden;
+  transition: height .35s ease-out;
+  margin-left: 0;
+  margin-bottom: 20px;
+  background: #F4F4F4;
+}
+.accordion-panel .accordion .content {
+  padding: 25px;
+  overflow: auto;
+}
+.accordion-panel .plus-icon {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  position: relative;
+  transition: transform 0.35s ease-out;
+  position: absolute;
+  right: 35px;
+  top: 50%;
+  margin-top: -12px;
+}
+.accordion-panel .plus-icon:before,
+.accordion-panel .plus-icon:after {
+  content: '';
+  background: #6bbf49;
+  position: absolute;
+}
+.accordion-panel .plus-icon:before {
+  width: 2px;
+  height: 15px;
+  margin-left: -0.5px;
+  left: 50%;
+}
+.accordion-panel .plus-icon:after {
+  width: 15px;
+  height: 2px;
+  margin-top: -0.5px;
+  top: 50%;
+  opacity: 1;
+  transition: opacity 0.35s ease-out;
+}
+.accordion-panel .is-open .plus-icon {
+  transform: rotate(90deg);
+}
+.accordion-panel .is-open .plus-icon:after {
+  opacity: 0;
+}
+.accordion-panel .hidden {
+  display: none;
+}
+.accordion-panel .open-btn,
+.accordion-panel .close-btn {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  width: 90px;
+}
+.accordion-panel .buttons-wrapper {
+  position: relative;
+}
+.accordion-panel .buttons-wrapper .plus-icon {
+  position: absolute;
+  right: 10px;
+  top: 12px;
+}
+</style>
+  <body>
+
+ 
+
+      {% include 'accueil_login/menu_gestionnaire.html' %}
+
+
+
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginLeft = "250px";
+    document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginLeft= "0";
+    document.body.style.backgroundColor = "white";
+}
+</script>
+<div class="mt-4" class="container">
+  <h2 class="text-center text-justify">Module d'importation de fichiers dans la base de données</h2>
+</div>
+
+
+<div class="container">
+<div class="container-fluid">
+    <div class="text-center">
+    <div class=" font-weight-bold alert alert-success" role="alert">
+      Etape 1
+    </div>
+</div>
+<br>
+
+  <p class="text-center text-justify">Il faut importer les fichiers dans le serveur avant de pouvoir les importer dans la base de données, pour importer un fichier cliquer <a href="nouveau_document">ici</a></p>
+<div class="mt-5" class="container">
+  <div class="d-flex justify-content-between">
+    <div class="p-1">
+    </div>
+    <div>
+          <img class="mr-3" id="image_file" src="{% static 'importationfichier/IMAGES/txt.png'%}" alt="PNG" width="75px" height="75px">
+          <img id="image_file" src="{% static 'importationfichier/IMAGES/csv.png'%}" alt="CSV" width="75px" height="75px">
+          <img class="ml-3" id="image_file" src="{% static 'importationfichier/IMAGES/xls.png'%}" alt="XLS" width="75px" height="75px">
+
+    </div>
+    <div class="p-1">
+      
+    </div>
+  </div>
+</div>
+  
+</div>
+</div>
+
+
+
+<div class="container">
+<div class="container-fluid">
+    <div class="text-center">
+    <div class="font-weight-bold alert alert-success" role="alert">
+      Etape 2
+    </div>
+</div>
+
+<p class="text-center text-justify"> 
+    Pour importer un fichier dans la base de données, il suffit de cliquer sur le bouton <img class="ml-1" src="{% static 'importationfichier/bootstrap/svg/upload.svg'%}" width="15px" height="15px" alt="icon name">
+  </p>
+
+<p class="text-center text-justify"> 
+    Si vous souhaitez supprimer un fichier dans la base de données, il suffit de cliquer sur le bouton <img class="ml-1" src="{% static 'importationfichier/bootstrap/svg/cross.svg'%}" width="15px" height="15px" alt="icon name">
+  </p>
+
+</div>
+</div>
+
+<!-- ACCORDION FICHIERS -->
+<div class="accordion-panel">
+<div class="buttons-wrapper">
+   
+    <div class="open-btn">
+      Tout ouvrir
+    </div>
+    <div class="close-btn hidden">
+      Tout fermer
+    </div>
+  </div>
+
+
+  <dl class="mx-2 accordion">
+
+        <dt>Fichier disponible sur le serveur <i class="plus-icon"></i></dt>
+    <dd>
+      <div class="content">
+
+        <div class="container-fluid mb-3">
+          <a href="delete_base_eleve"><button type="button" class="btn btn-outline-warning">Vider table élèves</button></a> 
+           <a href="delete_base_stage"><button type="button" class="btn btn-outline-warning">Vider table stages</button></a>
+          <a href="delete_base_programme"><button type="button" class="btn btn-outline-warning">Vider table programmes</button> </a>
+        </div>
+
+        {% if document%}
+          <table class="table table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th class="">Id du fichier</th>
+                <th class="">Description</th>
+                <th class="">Date d'importation</th>
+                <th class="">Nom du fichier</th>
+                <th class="">Importer dans BDD</th>
+                <th class="">Supprimer le fichier</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for doc in document %}
+                {% if doc.importer == 0 %}
+                  <tr>
+                    <td>{{doc.id}}</td>
+                    <td>{{ doc.description}}</td>
+                    <td>{{ doc.date_importation}}</td>
+                    <td>{{ doc.file}}</td>
+                    <td class="text-center"><a href="./import_bdd/{{doc.id}}"><img src="{% static 'importationfichier/bootstrap/svg/upload.svg'%}" width="15px" height="15px" alt="icon name"></a></td>
+                    <td class="text-center"><a href="./delete_file/{{doc.id}}"><img src="{% static 'importationfichier/bootstrap/svg/cross.svg'%}" width="15px" height="15px" alt="icon name"></a></td>
+                  </tr>     
+                {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+          {% if request.session.nbr_fichier_serveur  == 0%}
+            <p class="font-weight-bold">Aucun fichier à importer dans la BDD.</p>
+          {% endif %}
+        {% else %}
+          <table class="table table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th class="text-justify">Id du fichier</th>
+                <th class="text-justify">Description</th>
+                <th class="text-justify">Date d'importation</th>
+                <th class="text-justify">Nom du fichier</th>
+                <th class="text-justify">Importer dans BDD</th>
+                <th class="">Supprimer le fichier</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+          <p class="font-weight-bold">Aucun fichier à importer dans la BDD.</p>
+        {% endif %}
+      </div>
+    </dd>
+    <dt>Fichier importé dans BDD <i class="plus-icon"></i></dt>
+    <dd>
+      <div class="content">
+        {% if document%}
+          <table class="table table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th>Id du fichier</th>
+                <th>Description</th>
+                <th>Date d'importation</th>
+                <th>Nom du fichier</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% with tmp=0 %}
+              {% for doc in document %} 
+                {% if doc.importer %}
+                  <tr>
+                    <td>{{doc.id}}</td>
+                    <td>{{ doc.description}}</td>
+                    <td>{{ doc.date_importation}}</td>
+                    <td>{{ doc.file}}</td>
+                  </tr>     
+                {% endif %}
+              {% endfor %}
+            </tbody>
+          </table>
+          {% if request.session.nbr_fichier_bdd == 0%}
+            <p class="font-weight-bold"><p class="font-weight-bold">Aucun fichier a importé dans la BDD.</p></p>
+          {% endif %}
+          {% endwith %}
+        {% else %}
+          <table class="table table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th>Id du fichier</th>
+                <th>Description</th>
+                <th>Date d'importation</th>
+                <th>Nom du fichier</th>
+              </tr>
+            </thead>
+            <tbody>
+            </tbody>
+          </table>
+          <p class="font-weight-bold">Aucun fichier importé dans la BDD.</p>
+
+        {% endif %}
+      </div>
+    </dd>
+
+
+  </dl>
+</div>
+<script src='//production-assets.codepen.io/assets/common/stopExecutionOnTimeout-b2a7b3fe212eaa732349046d8416e00a9dec26eb7fd347590fbced3ab38af52e.js'></script><script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js'></script>
+<script >$(document).ready(function() {
+
+  var bodyEl = $('body'),
+    accordionDT = $('.accordion').find('dt'),
+    accordionDD = accordionDT.next('dd'),
+    parentHeight = accordionDD.height(),
+    childHeight = accordionDD.children('.content').outerHeight(true),
+    newHeight = parentHeight > 0 ? 0 : childHeight,
+    accordionPanel = $('.accordion-panel'),
+    buttonsWrapper = accordionPanel.find('.buttons-wrapper'),
+    openBtn = accordionPanel.find('.open-btn'),
+    closeBtn = accordionPanel.find('.close-btn');
+
+  bodyEl.on('click', function(argument) {
+    var totalItems = $('.accordion').children('dt').length;
+    var totalItemsOpen = $('.accordion').children('dt.is-open').length;
+
+    if (totalItems == totalItemsOpen) {
+      openBtn.addClass('hidden');
+      closeBtn.removeClass('hidden');
+      buttonsWrapper.addClass('is-open');
+    } else {
+      openBtn.removeClass('hidden');
+      closeBtn.addClass('hidden');
+      buttonsWrapper.removeClass('is-open');
+    }
+  });
+
+  function openAll() {
+
+    openBtn.on('click', function(argument) {
+
+      accordionDD.each(function(argument) {
+        var eachNewHeight = $(this).children('.content').outerHeight(true);
+        $(this).css({
+          height: eachNewHeight
+        });
+      });
+      accordionDT.addClass('is-open');
+    });
+  }
+
+  function closeAll() {
+
+    closeBtn.on('click', function(argument) {
+      accordionDD.css({
+        height: 0
+      });
+      accordionDT.removeClass('is-open');
+    });
+  }
+
+  function openCloseItem() {
+    accordionDT.on('click', function() {
+
+      var el = $(this),
+        target = el.next('dd'),
+        parentHeight = target.height(),
+        childHeight = target.children('.content').outerHeight(true),
+        newHeight = parentHeight > 0 ? 0 : childHeight;
+
+      // animate to new height
+      target.css({
+        height: newHeight
+      });
+
+      // remove existing classes & add class to clicked target
+      if (!el.hasClass('is-open')) {
+        el.addClass('is-open');
+      }
+
+      // if we are on clicked target then remove the class
+      else {
+        el.removeClass('is-open');
+      }
+    });
+  }
+
+  openAll();
+  closeAll();
+  openCloseItem();
+});
+//# sourceURL=pen.js
+</script>
+  <!--<nav class="uk-navbar-container" uk-navbar>
+      <div class="uk-navbar-left">
+
+          <ul class="uk-navbar-nav">
+              <li class="uk-active"><a href="#">StatsEisti</a></li>
+              <li>
+                  <a href="#">Accueil</a>
+              </li>
+              <li><a href="#">Item</a></li>
+          </ul>
+
+      </div>
+      <div class="uk-navbar-right">
+
+          <ul class="uk-navbar-nav">
+              <li>
+                  <a href="#">Nous contacter</a>
+              </li>
+              <li>
+                  <a href="#">Mon compte</a>
+                  <div class="uk-navbar-dropdown">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                        <li class="uk-active"><a href="#">Mes informations</a></li>
+                        <li class="uk-active"><a href="#">Se déconnecter</a></li>
+                    </ul>
+                </div>
+              </li>
+          </ul>
+      </div>
+  </nav> 
+-->
+
+<!--
+  <div class="uk-card uk-card-default uk-card-body uk-text-center ">
+    <h1 id = "titre_principal" class="uk-heading-divider"></h1>
+    <p>Vous voyez dans ce module les fichiers qui ont été ajoutés sur le serveur, mais également ceux que l'on peut ajouter à la base de données</p>
+    <p>
+    Pour importer un fichier dans la base de données il suffit de cliquer sur le bouton <a href="" uk-icon="icon: upload"></a>
+    </p>
+    <p>
+    Si vous souhaitez importer un nouveau fichier sans le metre dans la base de données cliquer <a href="nouveau_document"><span class="uk-text-background">ici</span></a>  
+    
+    </p>
+
+  <div class="uk-child-width-1-2@s uk-child-width-1-3@m uk-text-center" uk-grid>
+    <div>
+        <div class="uk-card uk-card-default uk-card-body">hejflefzhfze e zej hzejhf zjkf hkehj fhezuf zejjckzfkz hfhekjfh kjezhf kzhf uzf ef kqf </div>
+    </div>
+    <div>
+        <div class="uk-card uk-card-default uk-card-body">Item</div>
+    </div>
+    <div>
+        <div class="uk-card uk-card-default uk-card-body">Item</div>
+    </div>
+</div>
+
+  <div id="accordion1" class="uk-card uk-card-default uk-card-body uk-text-left uk-box-shadow-large uk-padding">
+    <ul uk-accordion>
+        <li>
+            <h3  class="uk-accordion-title">Fichier importé</h3>
+            <div class="uk-accordion-content">
+                {% if document%} 
+                <table class="uk-table uk-table-divider">
+                  <thead>
+                        <tr> 
+                            <th>Id du fichier</th>
+                            <th>Description</th>
+                            <th>Date d'importation</th>
+                            <th>Nom du fichier</th>
+                        </tr>
+                    </thead>
+                <tbody>
+                {% for doc in document %}
+                  {% if doc.importer %}
+                    
+                      
+                    
+                        <tr>
+                          <td>{{doc.id}}</td>
+                          <td>{{ doc.description}}</td>
+                          <td>{{ doc.date_importation}}</td>
+                          <td>{{ doc.file}}</td>
+                      </tr>     
+                  {% endif %}
+                {% endfor %}
+                </tbody>
+                </table>
+                {% if document|length == 0 %}
+                     <br> Auncun fichier n'a encore été importé.
+                {% endif %}
+                {% else %}
+                <ul uk-tab>
+                      <li class="uk-active"> ID -</li>
+                      <li> DESCRIPTION -</li>
+                      <li> DATE D'IMPORTATION</li>
+                </ul>
+                <br> Auncun fichier n'a encore été importé.
+                {% endif %}
+
+
+            </div>
+        </li>
+        <li >
+            <h3 class="uk-accordion-title">Fichier à importer</h3>
+            <div class="uk-accordion-content">
+                {% if document%} 
+                <table class="uk-table uk-table-divider">
+                  <thead>
+                        <tr> 
+                            <th>Id du fichier</th>
+                            <th>Description</th>
+                            <th>Date d'importation</th>
+                            <th>Nom du fichier</th>
+                        </tr>
+                    </thead>
+                <tbody>
+                {% for doc in document %}
+                  {% if doc.importer == 0%}
+                    
+                      
+                    
+                        <tr>
+                          <td>{{doc.id}}</td>
+                          <td>{{ doc.description}}</td>
+                          <td>{{ doc.date_importation}}</td>
+                          <td>{{ doc.file}} <a href="./import_bdd/{{doc.id}}" uk-icon="icon: upload"></a></td>
+                      </tr>     
+                  {% endif %}
+                {% endfor %}
+                </tbody>
+                </table>
+                {% if document|length == 0 %}
+                     <br> Auncun fichier n'a encore été importé.
+                {% endif %}
+                {% else %}
+                <ul uk-tab>
+                      <li class="uk-active"> ID -</li>
+                      <li> DESCRIPTION -</li>
+                      <li> DATE D'IMPORTATION</li>
+                </ul>
+                <br> Auncun fichier n'a encore été importé.
+                {% endif %}
+
+            </div>
+        </li>
+    </ul>
+    </div>
+</div>
+
+-->
+
+{% include 'accueil_login/footer.html' %}
+</body>
+</html>
+    
+    

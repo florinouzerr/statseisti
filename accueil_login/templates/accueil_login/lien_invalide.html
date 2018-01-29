@@ -1,0 +1,34 @@
+<html>
+<head>
+  <title>{% block title %}Lien invalide{% endblock %}</title>
+
+    <script src="{% static 'importationfichier/JS/index.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'importationfichier/bootstrap/css/bootstrap.css' %}">
+    <script src="{% static 'importationfichier/bootstrap/js/jquery.js' %}"></script>
+    <script src="{% static 'importationfichier/bootstrap/js/bootstrap.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'accueil_login/CSS/accueil.css' %}">
+    <link rel="stylesheet" href="{% static 'accueil_login/CSS/footer.css' %}">
+
+</head>
+<body>
+
+    
+
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <div class="p-1">
+    </div>
+    <div class="card mt-5 mb-5 px-5 py-5">
+      Le lien d'activation est invalide !
+    </div>
+    <div class="p-1">
+      
+    </div>
+  </div>
+</div>
+  {% include 'accueil_login/footer.html' %}
+
+</body>
+</html>

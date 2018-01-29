@@ -1,0 +1,230 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Statistiques</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'statistiques/CSS/index.css' %}" />
+  <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'statistiques/bootstrap/css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'statistiques/CSS/STATS/stats.css' %}">
+  <script src="{% static 'statistiques/bootstrap/js/jquery.js' %}"></script>
+  <script src="{% static 'statistiques/bootstrap/js/bootstrap.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+
+
+
+
+</head>
+<style type="text/css">
+  body {
+    font-family: "Lato", sans-serif;
+    transition: background-color .5s;
+}
+
+
+</style>
+<body>
+
+  {% include 'accueil_login/menu_utilisateur.html' %}
+  <!--
+	<nav class="navbar-expand-lg navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Stats Eisti</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav text-md-center nav-justified w-100">
+      
+      
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Importer fichiers</a>
+      </li>
+      
+      
+      <li class="nav-item active dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Mon compte 
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Mes informations</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'deconnexion' %}">Se déconnecter</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+-->
+<!-- MENU -->
+
+
+<!-- MENU 1 -->
+
+
+
+<div class="container mt-3" style="width: auto;">
+  <nav aria-label="breadcrumb ">
+  <ol class="breadcrumb " style=" background-color: #f8fbff; font-size: 13px">
+    <li class="breadcrumb-item text text-center"><a href="menu_stats">Menu statistiques</a></li>
+    <li class="breadcrumb-item active text-center" aria-current="page">Salaire moyen en ingénieur </li>
+  </ol>
+</nav>
+
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md">
+     <div class="container mt-4 mb-4">
+  <div class="list-group">
+    
+  <div href="#" class=" flex-column align-items-start ">
+    <div class="d-flex w-100 justify-content-between">
+      
+    </div>
+    <div class="card">
+  <div class="card-body">
+   <div class="" class="container">
+  <div class="d-flex justify-content-between">
+    <div class="p-1">
+    </div>
+    <div>
+          <img class="" id="image_file" src="{% static 'statistiques/IMAGES/ing1.png'%}" alt="PNG" width="100px" height="100px">
+          
+
+    </div>
+    <div class="p-1">
+      
+    </div>
+  </div>
+</div>
+  <h3 class="text-center mt-2">ING1</h3>
+    <p class="mb-1 mt-2 text-center">Salaire moyen d'un stage d'un élève-ingénieur en 1ère année à l'EISTI  </p>
+    <p class="text-center mt-2"> {{salaire_ing1}} €</p>
+    <div class="d-flex justify-content-between">
+          <div class="p-1">
+          </div>
+          <div>
+                <section><a href="{% url 'statistiques:uni_eleves' %}" class="text-center"><button type="button" class="btn btn-light btn-lg" style="font-size: 12px"> Cliquer ici pour accéder au statistiques</button></a>
+                </section>
+
+          </div>
+          <div class="p-1">
+            
+          </div>
+        </div>
+  </div>
+</div>
+    
+  </div>
+  
+</div>
+</div>
+    </div>
+    <div class="col-md">
+            <div class="container mt-4 mb-4">
+        <div class="list-group">
+          
+        <div href="#" class=" flex-column align-items-start ">
+          <div class="d-flex w-100 justify-content-between">
+            
+          </div>
+          <div class="card">
+        <div class="card-body">
+         <div class="" class="container">
+        <div class="d-flex justify-content-between">
+          <div class="p-1">
+          </div>
+          <div>
+                <img class="" id="image_file" src="{% static 'statistiques/IMAGES/ing2.png'%}" alt="PNG" width="100px" height="100px">
+                
+
+          </div>
+          <div class="p-1">
+            
+          </div>
+        </div>
+      </div>
+          <h3 class="text-center mt-2">ING2</h3>
+            <p class="mb-1 mt-2 text-center">Salaire moyen d'un stage d'un élève-ingénieur en 2ème année à l'EISTI  </p>
+            <p class="text-center mt-2"> {{salaire_ing2}} €</p>
+          <div class="d-flex justify-content-between">
+          <div class="p-1">
+          </div>
+          <div>
+                <section><a href="{% url 'statistiques:uni_programme' %}" class="text-center"><button type="button" class="btn btn-light btn-lg" style="font-size: 12px"> Cliquer ici pour accéder au statistiques</button></a>
+                </section>
+
+          </div>
+          <div class="p-1">
+            
+          </div>
+        </div>
+          
+        </div>
+      </div>
+          
+        </div>
+        
+      </div>
+      </div>
+    </div>
+    <div class="col-md">
+     <div class="container mt-4 mb-4">
+  <div class="list-group">
+    
+  <div href="#" class=" flex-column align-items-start ">
+    <div class="d-flex w-100 justify-content-between">
+      
+    </div>
+    <div class="card">
+  <div class="card-body">
+   <div class="" class="container">
+  <div class="d-flex justify-content-between">
+    <div class="p-1">
+    </div>
+    <div>
+          <img class="" id="image_file" src="{% static 'statistiques/IMAGES/ing3.png'%}" alt="PNG" width="100px" height="100px">
+          
+
+    </div>
+    <div class="p-1">
+      
+    </div>
+  </div>
+</div>
+  <h3 class="text-center mt-2">ING3</h3>
+        <p class="mb-1 mt-2 text-center">Salaire moyen d'un stage d'un élève-ingénieur en 3ème année à l'EISTI  </p>
+        <p class="text-center mt-2"> {{salaire_ing3}} €</p>
+    <div class="d-flex justify-content-between">
+          <div class="p-1">
+          </div>
+          <div class=" ">
+                <section class=""><a href="{% url 'statistiques:quali_quali' %}" class="text-center "><button type="button" class="btn btn-light btn-lg " style="font-size: 12px"> Cliquer ici pour accéder au statistiques</button></a>
+                </section>
+
+          </div>
+          <div class="p-1">
+            
+          </div>
+        </div>
+  </div>
+</div>
+    
+  </div>
+  
+</div>
+</div>
+    </div>
+  </div>
+</div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,288 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Statistiques</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'statistiques/CSS/index.css' %}" />
+  <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'statistiques/bootstrap/css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'statistiques/CSS/STATS/stats.css' %}">
+  <script src="{% static 'statistiques/bootstrap/js/jquery.js' %}"></script>
+  <script src="{% static 'statistiques/bootstrap/js/bootstrap.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+
+
+
+
+</head>
+<style type="text/css">
+  body {
+    font-family: "Lato", sans-serif;
+    transition: background-color .5s;
+}
+
+
+</style>
+<body>
+	{% include 'accueil_login/menu_utilisateur.html' %}
+
+<!-- MENU -->
+
+
+<!-- MENU 1 -->
+
+
+   <div class="container mt-3" style="width: auto;">
+  <nav aria-label="breadcrumb ">
+  <ol class="breadcrumb " style=" background-color: #f8fbff; font-size: 13px">
+    <li class="breadcrumb-item text text-center"><a href="menu_stats">Menu statistiques</a></li>
+    <li class="breadcrumb-item active text-center" aria-current="page">Nombre d'élève par programme en fonction de l'année scolaire.</li>
+  </ol>
+</nav>
+
+</div>
+
+
+
+
+
+{% include 'accueil_login/menu_left_stats.html' %}
+
+
+<div class="card mx-auto mt-3" style="width: 95%; ">
+  <div class="card-header text-center">
+    Nombre d'élèves par programme en fonction de l'année scolaire pour le <span class="text-primary">CYCLE INGENIEUR<span>.
+    
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Choisir une année scolaire </h5>
+
+    <div class="bd-example bd-example-tabs">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+   
+
+
+      <div class="card-body">
+<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+      
+            {% for tmp in labels_annee_scolaire%}
+              <a class="nav-link text-center mb-1" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-{{forloop.counter0}}" role="tab" aria-controls="v-pills-home" aria-selected="true" style="font-size: 15px; border: 0.5px solid;">{{tmp}}</a>
+            {% endfor%}
+          </div>
+        </div>
+      </div>
+  </div>
+        <div class="col-md-9 ">
+          <div class="tab-content" id="v-pills-tabContent">
+            {% for tmp in labels_annee_scolaire%}
+            
+              <div class="tab-pane fade" id="v-pills-{{forloop.counter0}}" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                <div class="container mt-2 " >
+                  <div class="row">
+                    <div class="col-lg ">
+                      <div class="card card-inverse mb-3 text-center" >
+                        <canvas id="bar-chart{{forloop.counter}}"  ></canvas>
+                         
+                        </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            {% endfor%}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- AUTRE STATS -->
+
+<div class="card mx-auto mt-5" style="width: 95%; ">
+  <div class="card-header text-center">
+    Nombre d'élèves par programme en fonction de l'année scolaire pour le <span class="text-primary">CYCLE PREPARATOIRE<span>.
+    
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Choisir une année scolaire </h5>
+
+    <div class="bd-example bd-example-tabs">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+   
+
+
+      <div class="card-body">
+<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+      {% with my_var=labels_annee_scolaire|length %}
+      
+            {% for tmp in labels_annee_scolaire%}
+
+              <a class="nav-link text-center mb-1" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-{{forloop.counter0|add:my_var}}" role="tab" aria-controls="v-pills-home" aria-selected="true" style="font-size: 15px; border: 0.5px solid;">{{tmp}}</a>
+            {% endfor%}
+      
+
+          </div>
+        </div>
+      </div>
+  </div>
+        <div class="col-md-9 ">
+          <div class="tab-content" id="v-pills-tabContent">
+            {% for tmp in labels_annee_scolaire%}
+            
+              <div class="tab-pane fade" id="v-pills-{{forloop.counter0|add:my_var}}" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                <div class="container mt-2 " >
+                  <div class="row">
+                    <div class="col-lg ">
+                      <div class="card card-inverse mb-3 text-center" >
+                        <canvas id="bar-chart{{forloop.counter|add:my_var}}"  ></canvas>
+                         
+                        </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            {% endfor%}
+            {% endwith %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  new Chart(document.getElementById("pie-chart0"), {
+    type: 'pie',
+    data: {
+      labels: {{labels_campus|safe}},
+      datasets: [
+        {
+          backgroundColor: {{color_campus|safe}},
+          data: {{ donnees_campus}}
+        }
+      ]
+    },
+    options: {
+      responsive : true,
+      maintainAspectRatio : true,
+
+      title: {
+        fontSize : 25,
+        display: true,
+        text: "Pourcentages d'élèves à Pau et Cergy",
+      }
+    }
+});
+</script>
+
+
+<script type="text/javascript">
+  new Chart(document.getElementById("bar-chart0"), {
+    type: 'bar',
+    data: {
+      labels: {{labels_annee_scolaire|safe}},
+      datasets: [
+        {
+          backgroundColor: {{color_annee_scolaire|safe}},
+          data: {{ donnees_annee_scolaire}}
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+
+      responsive : true,
+      maintainAspectRatio : true,
+
+      title: {
+
+        fontSize : 25,
+        display: true,
+        text: "Nombre d'élèves par année scolaire",
+      }
+    }
+});
+</script>
+
+<script type="text/javascript">
+
+  {% for var1,var2 in liste_ING%}
+    new Chart(document.getElementById("bar-chart" +"{{forloop.counter}}"), {
+      type: 'bar',
+      data: {
+        labels: {{labels_programme_ING|safe}},
+        datasets: [
+          {
+            backgroundColor: {{var2|safe}},
+            data: {{var1|safe}}
+          }
+        ]
+      },
+      options: {
+        legend: { display: false },
+
+        responsive : true,
+
+        title: {
+
+          fontSize : 25,
+          display: true,
+          text: "Nombre d'élèves par promotions en fonction de l'année scolaire",
+        }
+      }
+  });
+  {% endfor %}
+
+  {% with my_var=labels_annee_scolaire|length %}
+  {% for var1,var2 in liste_CPI%}
+    new Chart(document.getElementById("bar-chart" +"{{forloop.counter|add:my_var}}"), {
+      type: 'bar',
+      data: {
+        labels: {{labels_programme_CPI|safe}},
+        datasets: [
+          {
+            backgroundColor: {{var2|safe}},
+            data: {{var1|safe}}
+          }
+        ]
+      },
+      options: {
+        legend: { display: false },
+
+        responsive : true,
+
+        title: {
+
+          fontSize : 25,
+          display: true,
+          text: "Nombre d'élèves par promotions en fonction de l'année scolaire",
+        }
+      }
+  });
+  {% endfor %}
+  {% endwith %}
+</script>
+
+{% include 'accueil_login/footer.html' %}
+
+</body>
+</html>

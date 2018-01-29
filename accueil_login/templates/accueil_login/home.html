@@ -1,0 +1,34 @@
+{% extends 'accueil_login/base.html' %}
+
+{% block title %}Connexion{% endblock %}
+
+{% block content %}
+
+{% load static %}
+
+  <div class="container_login">
+    <div class="info" style="margin-top: 10px; margin-bottom: 10px">
+      <img src="{% static 'accueil_login/images/logo.png' %}" width="175px" height="175px">
+      <p> Bienvenue sur Stats Eisti </p>
+    </div>
+  </div>
+
+  <div class="form" style="margin-bottom: 50px">
+    <div class="thumbnail"><img src="{% static 'accueil_login/images/laptop.png' %}"></div>
+      {% if error %}
+        <p><strong>Utilisateur inconnu ou mauvais de mot de passe.</strong></p>
+      {% endif %}
+
+
+        <form method="post" action=".">
+            {% csrf_token %}
+            <input id="id_username" type="text" name="username" placeholder="Nom d'utilisateur"/>
+            <input id="id_password" type="password" name="password" placeholder="Mot de passe"/>
+            <button type="submit">Connexion</button>
+            <p class="message">Pas encore inscrit? <a href="{% url 'signup' %}">Créer un compte</a></p>
+        </form>
+  </div>
+
+
+{% endblock %}
+

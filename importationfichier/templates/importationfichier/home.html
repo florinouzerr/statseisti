@@ -1,0 +1,188 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Importation BDD</title>
+  <!-- UIkit CSS -->
+   <!--<link rel="stylesheet" type="text/css" href="{% static 'importationfichier/CSS/uikit.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'importationfichier/CSS/index.css' %}" />
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+
+  <script src="{% static 'importationfichier/JS/uikit.min.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.35/js/uikit-icons.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+ 
+  <script src="{% static 'importationfichier/JS/uikit-icons.min.js' %}"></script>
+    -->
+  <script src="{% static 'importationfichier/JS/index.js' %}"></script>
+  <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'importationfichier/bootstrap/css/bootstrap.css' %}">
+  <script src="{% static 'importationfichier/bootstrap/js/jquery.js' %}"></script>
+  <script src="{% static 'importationfichier/bootstrap/js/bootstrap.js' %}"></script>
+
+  </head>
+  <style type="text/css">
+    body {
+      font-family: 'Maven Pro', sans-serif;
+    }
+  </style>
+
+<style class="cp-pen-styles">
+body {
+  overflow-y: scroll;
+}
+
+.accordion-panel {
+  margin: 20px auto;
+  max-width: 90%;
+}
+.accordion-panel .accordion {
+  padding-top: 30px;
+}
+.accordion-panel .accordion dt {
+  display: block;
+  padding: 25px;
+  background: #E3E1E2;
+  color: #555;
+  cursor: pointer;
+  position: relative;
+  user-select: none;
+}
+.accordion-panel .accordion dd {
+  height: 0;
+  overflow: hidden;
+  transition: height .35s ease-out;
+  margin-left: 0;
+  margin-bottom: 20px;
+  background: #F4F4F4;
+}
+.accordion-panel .accordion .content {
+  padding: 25px;
+  overflow: auto;
+}
+.accordion-panel .plus-icon {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  position: relative;
+  transition: transform 0.35s ease-out;
+  position: absolute;
+  right: 35px;
+  top: 50%;
+  margin-top: -12px;
+}
+.accordion-panel .plus-icon:before,
+.accordion-panel .plus-icon:after {
+  content: '';
+  background: #6bbf49;
+  position: absolute;
+}
+.accordion-panel .plus-icon:before {
+  width: 2px;
+  height: 15px;
+  margin-left: -0.5px;
+  left: 50%;
+}
+.accordion-panel .plus-icon:after {
+  width: 15px;
+  height: 2px;
+  margin-top: -0.5px;
+  top: 50%;
+  opacity: 1;
+  transition: opacity 0.35s ease-out;
+}
+.accordion-panel .is-open .plus-icon {
+  transform: rotate(90deg);
+}
+.accordion-panel .is-open .plus-icon:after {
+  opacity: 0;
+}
+.accordion-panel .hidden {
+  display: none;
+}
+.accordion-panel .open-btn,
+.accordion-panel .close-btn {
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  width: 90px;
+}
+.accordion-panel .buttons-wrapper {
+  position: relative;
+}
+.accordion-panel .buttons-wrapper .plus-icon {
+  position: absolute;
+  right: 10px;
+  top: 12px;
+}
+</style>
+<body>
+
+    {% include 'accueil_login/menu_gestionnaire.html' %}
+
+
+
+<div class="mt-4" class="container">
+  <h2 class="text-center text-justify ">Module d'importation de fichiers sur le serveur</h2>
+</div>
+
+<div class="mt-3 mb-3" class="container">
+  <div class="d-flex justify-content-between">
+    <div class="p-1">
+    </div>
+    <div>
+          <img class="mr-3" id="image_file" src="{% static 'importationfichier/IMAGES/txt.png'%}" alt="PNG" width="75px" height="75px">
+          <img id="image_file" src="{% static 'importationfichier/IMAGES/csv.png'%}" alt="CSV" width="75px" height="75px">
+          <img class="ml-3" id="image_file" src="{% static 'importationfichier/IMAGES/xls.png'%}" alt="XLS" width="75px" height="75px">
+
+    </div>
+    <div class="p-1">
+      
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="container-fluidon">
+     <p class="text-center text-justify ">Voici un formulaire vous permettant d'importer un fichier sur le serveur. Il suffit de rentre un nom d'importation et le fichier correspondant. Pour confirmer le tout cliquer sur le bouton "importer le fichier"</p>
+     <p class="text-center text-justify">Cliquer <a href="import_bdd">ici</a> pour revenir aux importations de fichier.</p>
+    <div class="text-center">
+     <form action="upload" method="POST" enctype="multipart/form-data" >
+      {% csrf_token %}
+      {{ form.title }} <br> <br>
+        <div class="mx-auto">
+          {{ form.file }}<br>
+        </div>
+        <button id="menu_stats" type="submit" class=" ml-3 mt-3 mb-3 btn btn-outline-info">Importer le fichier</button>
+     </form>
+
+</div>
+    <div class="text-center">
+        <div class="font-weight-bold alert alert-warning" role="alert">
+          <img class="ml-1 mr-3" src="{% static 'importationfichier/bootstrap/svg/warning.svg'%}" width="50px" height="50px" alt="icon name">Conditions d'importation
+        </div>
+    </div>
+
+  </div>
+</div>
+
+    <div class="accordion-panel">
+        <div class="alert alert-info">
+         <p class="text-center text-justify ">Pour que l'importation se déroule bien, il faut que le fichier possède un header, sinon votre fichier ne sera pas importé.</p>
+          <p class="text-center text-justify ">Pour importer les adresse des élèves votre fichier doit contenir au minimun "adr" dans le nom du fichier. Par exemple le fichier : <br> <span class="text-primary">ADR</span>_ELEVES_ ... _ANO.txt </p>
+          <p class="text-center text-justify ">Pour importer les stages votre fichier doit contenir au minimun "stage" dans le nom du fichier. Par exemple le fichier : <br> <span class="text-primary">STAGES</span>_ELEVES_ ... _TABLE_ANO.txt </p>
+          <p class="text-center text-justify ">Pour importer les programmes des élèves votre fichier doit contenir au minimun "prg" dans le nom du fichier. Par exemple le fichier : <br> <span class="text-primary">PRG</span>_ELV_ ... _DATA_TABLE_ANO.txt</p>
+      </div>
+    </div>
+  
+
+
+      {% include 'accueil_login/footer.html' %}
+
+  
+
+</body>
+</html>
+    
+    

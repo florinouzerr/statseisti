@@ -1,0 +1,195 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
+<style type="text/css">
+.lol{
+    background: #caebf2; /* Old browsers */
+    /* IE9 SVG, needs conditional override of 'filter' to 'none' */
+      margin-bottom: 2%;
+      margin-top: 2%;
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f32d27', endColorstr='#ff6b45',GradientType=1 ); /* IE6-8 fallback on horizontal gradient */
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 2%;
+    width:50%;
+    margin-left: 30%;
+    top:15%;
+    left:30%;
+
+    -webkit-box-shadow: 0px 0px 8px 0px rgba(50, 50, 50, 0.54);
+-moz-box-shadow:    0px 0px 8px 0px rgba(50, 50, 50, 0.54);
+box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.54);
+}
+h1{
+  padding-top: 2% !important;
+  color : #2C5A89 !important;
+	text-align: center;
+
+}
+label {
+    color: #17a2b8;
+    font-size: 18px;
+    font-weight: 500;
+}
+
+
+.form-control{
+
+    color: #000000 !important;
+    font-size: 25px;
+    border: none;
+    padding: 25px;
+    padding-left: 10px;
+    border-bottom: 1px solid #CCC;
+    margin-bottom: 10px;
+    outline: none;
+
+}
+
+.form-control:focus{
+    border-radius: 0px;
+    border-bottom: 1px solid #FC563B;
+    margin-bottom: 10px;
+    outline: none;
+
+}
+
+</style>
+{% load widget_tweaks %}
+{% include 'accueil_login/menu_utilisateur.html' %}
+{% block content %}
+ <div class="lol">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+<h1>Profil</h1>
+<br>
+			<form method="POST" class="post-form ">{% csrf_token %}
+{% for field in form %}
+				<div class="form-control">
+					{{ field.label_tag }}
+
+					{% if form.is_bound %}
+						{% if field.errors %}
+							{% render_field field class="form-control is-invalid" %}
+							{% for error in field.errors %}
+								<div class="invalid-feedback">
+									{{ error }}
+								</div>
+							{% endfor %}
+						{% else %}
+							{% render_field field class="form-control is-valid" %}
+						{% endif %}
+					{% else %}
+						{% render_field field class="form-control" %}
+					{% endif %}
+
+
+				</div>
+			{% endfor %}
+
+
+<button type="submit" class="btn btn-info">Modifier le profil</button>
+</form>
+
+
+</div>
+{% endblock %}
+
+  {% include 'accueil_login/footer.html' %}
+  </body>
+  </html>
+
+
+<!--
+<form method="POST" class="post-form ">{% csrf_token %}  {{ form.as_p }}
+</form>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" crossorigin="anonymous">
+
+<div class="container" style="padding-top: 60px;">
+  <h1 class="page-header">Votre Profil</h1>
+  <div class="row">
+
+
+		  <div class="col-md-4 col-sm-6 col-xs-12">
+      <div class="text-center">
+        <img src="http://lorempixel.com/200/200/people/9/" class="avatar img-circle img-thumbnail" alt="avatar">
+        <h6>Upload a different photo...</h6>
+        <input type="file" class="text-center center-block well well-sm">
+      </div>
+    </div>
+
+
+	  <div class="col-md-8 col-sm-6 col-xs-12 personal-info">
+      <div class="alert alert-info alert-dismissable">
+        <a class="panel-close close" data-dismiss="alert">×</a>
+        <i class="fa fa-coffee"></i>
+	Vous pouvez modifier votre profil ici.
+</div>
+
+
+      <h3>Informations personnelles</h3>
+      <form class="form-horizontal" role="form">
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Prenom:</label>
+          <div class="col-lg-8">
+		{% if user.is_authenticated %}
+            <input class="form-control" value="{{user.last_name}}" type="text">
+		{% endif %}
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Nom:</label>
+          <div class="col-lg-8">
+		{% if user.is_authenticated %}
+            <input class="form-control" value="{{user.first_name}}" type="text">
+		{% endif %}
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-lg-3 control-label">Email:</label>
+          <div class="col-lg-8">
+		{% if user.is_authenticated %}
+            <input class="form-control" value="{{user.email}}" type="text">
+		{% endif %}
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Identifiant:</label>
+          <div class="col-md-8">
+		{% if user.is_authenticated %}
+            <input class="form-control" value="{{user.username}}" type="text">
+		{% endif %}
+          </div>
+        </div>
+     <div class="form-group">
+          <label class="col-md-3 control-label">Mot de passe:</label>
+          <div class="col-md-8">
+		{% if user.is_authenticated %}
+            <input class="form-control" value="{{user.password}}" type="password">
+		{% endif %}
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label">Confirmer mot de passe(si changement):</label>
+          <div class="col-md-8">
+		{% if user.is_authenticated %}
+            <input class="form-control" value="{{user.password}}" type="password">
+		{% endif %}
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-md-3 control-label"></label>
+          <div class="col-md-8">
+
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+-->

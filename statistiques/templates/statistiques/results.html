@@ -1,0 +1,60 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Statistiques</title>
+
+
+	<link rel="stylesheet" type="text/css" href="{% static 'statistiques/CSS/index.css' %}" />
+  <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'statistiques/bootstrap/css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'statistiques/CSS/STATS/stats.css' %}">
+  <script src="{% static 'statistiques/bootstrap/js/jquery.js' %}"></script>
+  <script src="{% static 'statistiques/bootstrap/js/bootstrap.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+   <link rel="stylesheet" href="https://openlayers.org/en/v4.6.4/css/ol.css" type="text/css">
+   
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+   integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+   integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+   crossorigin=""></script>
+</head>
+
+<style type="text/css">
+    font-family: "Lato", sans-serif;
+    transition: background-color .5s;    
+}
+</style>
+
+<body>
+	{% include 'accueil_login/menu_utilisateur.html' %}
+
+
+<div class="container mt-4 mb-4">
+  <div class="list-group">
+  <a href="#" class="list-group-item list-group-item-info flex-column align-items-start ">
+    <div class="d-flex w-100 justify-content-between">
+      <h5 class="mb-1">Statistiques sur les élèves</h5>
+    </div>
+    <p class="mb-1">Nous vous proposons dans cette section des statistiques sur les élèves, comme leurs pays de provenances mais également les villes. Mais égalament la possibilité de voirs les résultats sur des cartes.</p>
+  </a>
+  
+</div>
+</div>
+
+
+
+
+
+{% include 'accueil_login/footer.html' %}
+
+
+</body>
+</html>

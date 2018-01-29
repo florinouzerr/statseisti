@@ -1,0 +1,546 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Statistiques</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'statistiques/CSS/index.css' %}" />
+  <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'statistiques/bootstrap/css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'statistiques/CSS/STATS/stats.css' %}">
+  <script src="{% static 'statistiques/bootstrap/js/jquery.js' %}"></script>
+  <script src="{% static 'statistiques/bootstrap/js/bootstrap.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+
+
+
+
+</head>
+<style type="text/css">
+  body {
+    font-family: "Lato", sans-serif;
+    transition: background-color .5s;
+}
+
+
+</style>
+<body>
+	<nav class="navbar-expand-lg navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Stats Eisti</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav text-md-center nav-justified w-100">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"><span class="align-middle">Accueil </span>  <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Statistiques</a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Importer fichiers</a>
+      </li>
+      
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Nous contacter</a>
+      </li>
+      <li class="nav-item active dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Mon compte 
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Mes informations</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="#">Se déconnecter</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- MENU -->
+
+
+<!-- MENU 1 -->
+
+
+
+          <div class="mt-2" class="container">
+            <div class="d-flex justify-content-between">
+              <div class="p-1">
+              </div>
+                <div>
+                  <div class=" card mt-3" onclick="openNav()" style="width: 18rem;">
+                    <div class="card-body">
+                      <p class="card-text text-center">
+                        <span  class="btn btn-lg">Menu statistiques</span>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              <div class="p-1">
+              </div>
+            </div>
+          </div>
+
+
+
+
+
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+   <div class="mt-2" class="container">
+            <div class="d-flex justify-content-between">
+              <div class="p-1">
+              </div>
+                <div>
+              <img class="mb-4" src="{% static 'statistiques/IMAGES/analytics.svg'%}" width="100%">
+
+                </div>
+              <div class="p-1">
+              </div>
+            </div>
+          </div>
+  <a class="text-center" onclick="openNav1()" href="#">Statistiques univariées</a>
+  <a class="text-center" onclick="openNav2()" href="#">Statistiques bivariées</a>
+
+</div>
+
+<div id="mySidenav1" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav1()">&times;</a>
+   <div class="mt-2" class="container">
+            <div class="d-flex justify-content-between">
+              <div class="p-1">
+              </div>
+                <div>
+              <img class="mb-4" src="{% static 'statistiques/IMAGES/pie-chart.svg'%}" width="100%">
+
+                </div>
+              <div class="p-1">
+              </div>
+            </div>
+          </div>
+  <a class="text-center" href="#">Elèves </a>
+  <a class="text-center" href="#">Stage </a>
+  <a class="text-center" href="uni_programme">Programme</a>
+
+</div>
+
+<div id="mySidenav2" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav2()">&times;</a>
+   <div class="mt-2" class="container">
+            <div class="d-flex justify-content-between">
+              <div class="p-1">
+              </div>
+                <div>
+              <img class="mb-4" src="{% static 'statistiques/IMAGES/bar.svg'%}" width="100%">
+
+                </div>
+              <div class="p-1">
+              </div>
+            </div>
+          </div>
+  <a onclick="openNav3()" class="text-center" href="#">Quantitatif - Quantitatif </a>
+  <a onclick="openNav4()" class="text-center" href="#">Quantitatif - Qualitatif </a>
+  <a onclick="openNav5()"class="text-center" href="#">Qualitatif - Qualitatif</a>
+
+</div>
+
+<div id="mySidenav3" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav3()">&times;</a>
+   <div class="mt-2" class="container">
+            <div class="d-flex justify-content-between">
+              <div class="p-1">
+              </div>
+                <div>
+              <img class="mb-4" src="{% static 'statistiques/IMAGES/statistics.svg'%}" width="100%">
+
+                </div>
+              <div class="p-1">
+              </div>
+            </div>
+          </div>
+  <a class="text-center" href="#">Elèves </a>
+  <a class="text-center" href="#">Stage </a>
+  <a class="text-center" href="#">Programme</a>
+</div>
+
+<div id="mySidenav4" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav4()">&times;</a>
+   <div class="mt-2" class="container">
+            <div class="d-flex justify-content-between">
+              <div class="p-1">
+              </div>
+                <div>
+
+                </div>
+              <div class="p-1">
+              </div>
+            </div>
+          </div>
+  <a class="text-center" href="#">Elèves </a>
+  <a class="text-center" href="#">Stage </a>
+  <a class="text-center" href="#">Programme</a>
+</div>
+
+<div id="mySidenav5" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav5()">&times;</a>
+   <div class="mt-2" class="container">
+            <div class="d-flex justify-content-between">
+              <div class="p-1">
+              </div>
+                <div>
+              <img class="mb-4" src="{% static 'statistiques/IMAGES/bar2.svg'%}" width="100%">
+
+                </div>
+              <div class="p-1">
+              </div>
+            </div>
+          </div>
+  <a class="text-center" href="#">Elèves </a>
+  <a class="text-center" href="#">Stage </a>
+  <a class="text-center" href="#">Programme</a>
+</div>
+
+
+<script>
+function openNav() {
+    document.getElementById("mySidenav").style.width = "350px";
+}
+
+function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+}
+
+function openNav1() {
+    document.getElementById("mySidenav1").style.width = "350px";
+}
+
+function closeNav1() {
+    document.getElementById("mySidenav1").style.width = "0";
+}
+
+function openNav2() {
+    document.getElementById("mySidenav2").style.width = "350px";
+}
+
+function closeNav2() {
+    document.getElementById("mySidenav2").style.width = "0";
+}
+
+function openNav3() {
+    document.getElementById("mySidenav3").style.width = "350px";
+}
+
+function closeNav3() {
+    document.getElementById("mySidenav3").style.width = "0";
+}
+
+function openNav4() {
+    document.getElementById("mySidenav4").style.width = "350px";
+}
+
+function closeNav4() {
+    document.getElementById("mySidenav4").style.width = "0";
+}
+
+function openNav5() {
+    document.getElementById("mySidenav5").style.width = "350px";
+}
+
+function closeNav5() {
+    document.getElementById("mySidenav5").style.width = "0";
+}
+</script>
+
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-lg">
+      <div class="card card-inverse mb-3 text-center" >
+        <canvas id="pie-chart0" ></canvas>
+          <div class="mt-2" class="container">
+            <div class="d-flex justify-content-between">
+              <div class="p-1">
+              </div>
+                <div>
+                  <div class=" card border-info mb-3" style="width: 18rem;">
+                    <div class="card-body">
+                      <p class="card-text text-center">
+                        Nombre d'élèves au total : {{total_eleve}} <br>
+                        Nombre d'élèves à Cergy : {{total_cergy}} <br>
+                        Nombre d'élèves à Pau : {{total_pau}} <br>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              <div class="p-1">
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="col-lg">
+      <div class="card card-inverse mb-3 text-center" >
+      <canvas id="bar-chart0" ></canvas>
+      <div class="mt" class="container">
+        <div class="d-flex justify-content-between">
+          <div class="p-1">
+          </div>
+            <div>
+              <div class=" card border-info mb-3" style="display : none;width: 18rem;">
+                <div class="card-body">
+                  <p class="card-text">Nombre d'élèves au total :</p>
+                </div>
+              </div>
+            </div>
+          <div class="p-1">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</div>
+
+
+
+<div class="card mx-auto mt-3" style="width: 95%; ">
+  <div class="card-header text-center">
+    Nombre d'élèves par programme en fonction de l'année scolaire pour le <span class="text-primary">CYCLE INGENIEUR<span>.
+    
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Choisir une année scolaire </h5>
+
+    <div class="bd-example bd-example-tabs">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+   
+
+
+      <div class="card-body">
+<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+      
+            {% for tmp in labels_annee_scolaire%}
+              <a class="nav-link text-center mb-1" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-{{forloop.counter0}}" role="tab" aria-controls="v-pills-home" aria-selected="true" style="font-size: 15px; border: 0.5px solid;">{{tmp}}</a>
+            {% endfor%}
+          </div>
+        </div>
+      </div>
+  </div>
+        <div class="col-md-9 ">
+          <div class="tab-content" id="v-pills-tabContent">
+            {% for tmp in labels_annee_scolaire%}
+            
+              <div class="tab-pane fade" id="v-pills-{{forloop.counter0}}" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                <div class="container mt-2 " >
+                  <div class="row">
+                    <div class="col-lg ">
+                      <div class="card card-inverse mb-3 text-center" >
+                        <canvas id="bar-chart{{forloop.counter}}"  ></canvas>
+                         
+                        </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            {% endfor%}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+
+
+<!-- AUTRE STATS -->
+
+<div class="card mx-auto mt-5" style="width: 95%; ">
+  <div class="card-header text-center">
+    Nombre d'élèves par programme en fonction de l'année scolaire pour le <span class="text-primary">CYCLE PREPARATOIRE<span>.
+    
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">Choisir une année scolaire </h5>
+
+    <div class="bd-example bd-example-tabs">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+   
+
+
+      <div class="card-body">
+<div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+
+      {% with my_var=labels_annee_scolaire|length %}
+      
+            {% for tmp in labels_annee_scolaire%}
+
+              <a class="nav-link text-center mb-1" id="v-pills-home-tab" data-toggle="pill" href="#v-pills-{{forloop.counter0|add:my_var}}" role="tab" aria-controls="v-pills-home" aria-selected="true" style="font-size: 15px; border: 0.5px solid;">{{tmp}}</a>
+            {% endfor%}
+      
+
+          </div>
+        </div>
+      </div>
+  </div>
+        <div class="col-md-9 ">
+          <div class="tab-content" id="v-pills-tabContent">
+            {% for tmp in labels_annee_scolaire%}
+            
+              <div class="tab-pane fade" id="v-pills-{{forloop.counter0|add:my_var}}" role="tabpanel" aria-labelledby="v-pills-home-tab">
+                <div class="container mt-2 " >
+                  <div class="row">
+                    <div class="col-lg ">
+                      <div class="card card-inverse mb-3 text-center" >
+                        <canvas id="bar-chart{{forloop.counter|add:my_var}}"  ></canvas>
+                         
+                        </div>
+                    </div>
+                  </div>
+
+                </div>
+              </div>
+            {% endfor%}
+            {% endwith %}
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+  </div>
+
+</div>
+
+<script type="text/javascript">
+  new Chart(document.getElementById("pie-chart0"), {
+    type: 'pie',
+    data: {
+      labels: {{labels_campus|safe}},
+      datasets: [
+        {
+          backgroundColor: {{color_campus|safe}},
+          data: {{ donnees_campus}}
+        }
+      ]
+    },
+    options: {
+      responsive : true,
+      maintainAspectRatio : true,
+
+      title: {
+        fontSize : 25,
+        display: true,
+        text: "Pourcentages d'élèves à Pau et Cergy",
+      }
+    }
+});
+</script>
+
+
+<script type="text/javascript">
+  new Chart(document.getElementById("bar-chart0"), {
+    type: 'bar',
+    data: {
+      labels: {{labels_annee_scolaire|safe}},
+      datasets: [
+        {
+          backgroundColor: {{color_annee_scolaire|safe}},
+          data: {{ donnees_annee_scolaire}}
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+
+      responsive : true,
+      maintainAspectRatio : true,
+
+      title: {
+
+        fontSize : 25,
+        display: true,
+        text: "Nombre d'élèves par année scolaire",
+      }
+    }
+});
+</script>
+
+<script type="text/javascript">
+
+  {% for var1,var2 in liste_ING%}
+    new Chart(document.getElementById("bar-chart" +"{{forloop.counter}}"), {
+      type: 'bar',
+      data: {
+        labels: {{labels_programme_ING|safe}},
+        datasets: [
+          {
+            backgroundColor: {{var2|safe}},
+            data: {{var1|safe}}
+          }
+        ]
+      },
+      options: {
+        legend: { display: false },
+
+        responsive : true,
+
+        title: {
+
+          fontSize : 25,
+          display: true,
+          text: "Nombre d'élèves par promotions en fonction de l'année scolaire",
+        }
+      }
+  });
+  {% endfor %}
+
+  {% with my_var=labels_annee_scolaire|length %}
+  {% for var1,var2 in liste_CPI%}
+    new Chart(document.getElementById("bar-chart" +"{{forloop.counter|add:my_var}}"), {
+      type: 'bar',
+      data: {
+        labels: {{labels_programme_CPI|safe}},
+        datasets: [
+          {
+            backgroundColor: {{var2|safe}},
+            data: {{var1|safe}}
+          }
+        ]
+      },
+      options: {
+        legend: { display: false },
+
+        responsive : true,
+
+        title: {
+
+          fontSize : 25,
+          display: true,
+          text: "Nombre d'élèves par promotions en fonction de l'année scolaire",
+        }
+      }
+  });
+  {% endfor %}
+  {% endwith %}
+</script>
+
+
+</body>
+</html>

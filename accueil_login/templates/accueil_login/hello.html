@@ -1,0 +1,78 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}Hello{% endblock %}</title>
+
+    <script src="{% static 'importationfichier/JS/index.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'importationfichier/bootstrap/css/bootstrap.css' %}">
+    <script src="{% static 'importationfichier/bootstrap/js/jquery.js' %}"></script>
+    <script src="{% static 'importationfichier/bootstrap/js/bootstrap.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'accueil_login/CSS/accueil.css' %}">
+    <link rel="stylesheet" href="{% static 'accueil_login/CSS/footer.css' %}">
+
+</head>
+<body>
+
+  {% include 'accueil_login/menu_utilisateur.html' %}
+
+
+<div class="mt-1 mb-1" class="container">
+  <div class="d-flex justify-content-between">
+    <div class="p-1">
+    </div>
+    <div>
+           <div class="container">
+<br>
+  <section>
+<a href="{% url 'statistiques:menu_stats' %}" class="text-center"><button type="button" class="btn btn-light btn-lg">
+Cliquer ici pour accéder au statistiques</button></a>
+  </section>
+  </div>
+
+    </div>
+    <div class="p-1">
+      
+    </div>
+  </div>
+</div>
+
+ 
+
+  <div class="container mt-3 mb-3" style="width: 75%" >
+            <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img class="d-block w-100" src="{% static 'accueil_login/images/stats.jpg' %}" class="img-fluid" alt="Responsive image"  >
+          </div>
+          <div class="carousel-item">
+           <img class="d-block w-100" src="{% static 'accueil_login/images/django.png' %}" class="img-fluid" alt="Responsive image">
+          </div>
+        </div>
+        <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="sr-only">Next</span>
+        </a>
+      </div>
+  </div>
+
+  
+
+  {% block content %}
+  {% endblock %}
+
+  {% include 'accueil_login/footer.html' %}
+
+</body>
+</html>
+
+
+
+

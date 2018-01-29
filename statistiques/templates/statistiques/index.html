@@ -1,0 +1,286 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Statistiques</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'statistiques/CSS/index.css' %}" />
+  <script src="{% static 'statistiques/JS/index.js' %}"></script>
+  <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'statistiques/bootstrap/css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'statistiques/CSS/STATS/stats.css' %}">
+  <script src="{% static 'statistiques/bootstrap/js/jquery.js' %}"></script>
+  <script src="{% static 'statistiques/bootstrap/js/bootstrap.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+
+
+</head>
+<body>
+	
+    {% include 'accueil_login/menu_utilisateur.html' %}
+
+
+<div class="text-center">
+        <h2 class="mt-4 ">Statistiques sur les élèves</h2>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md">
+     <div class="container mt-4 mb-4">
+  <div class="list-group">
+    
+  <div href="#" class=" flex-column align-items-start ">
+    <div class="d-flex w-100 justify-content-between">
+      
+    </div>
+    <div class="card">
+  <div class="card-body">
+   <div class="" class="container">
+  <div class="d-flex justify-content-between">
+    <div class="p-1">
+    </div>
+    <div>
+          <img class="" id="image_file" src="{% static 'statistiques/IMAGES/progress.png'%}" alt="PNG" width="100px" height="100px">
+          
+
+    </div>
+    <div class="p-1">
+      
+    </div>
+  </div>
+</div>
+    <p class="mb-1 mt-2 text-center">Statistiques sur les élèves, comme leurs pays de provenances mais également les villes. Mais égalament la possibilité de voirs les résultats sur des cartes.</p>
+
+    <div class="d-flex justify-content-between">
+          <div class="p-1">
+          </div>
+          <div>
+                <section><a href="{% url 'statistiques:uni_eleves' %}" class="text-center"><button type="button" class="btn btn-light btn-lg" style="font-size: 12px"> Cliquer ici pour accéder au statistiques</button></a>
+                </section>
+
+          </div>
+          <div class="p-1">
+            
+          </div>
+        </div>
+  </div>
+</div>
+    
+  </div>
+  
+</div>
+</div>
+    </div>
+    <div class="col-md">
+            <div class="container mt-4 mb-4">
+        <div class="list-group">
+          
+        <div href="#" class=" flex-column align-items-start ">
+          <div class="d-flex w-100 justify-content-between">
+            
+          </div>
+          <div class="card">
+        <div class="card-body">
+         <div class="" class="container">
+        <div class="d-flex justify-content-between">
+          <div class="p-1">
+          </div>
+          <div>
+                <img class="" id="image_file" src="{% static 'statistiques/IMAGES/pau.png'%}" alt="PNG" width="100px" height="100px">
+                <img class="" id="image_file" src="{% static 'statistiques/IMAGES/cergy.png'%}" alt="PNG" width="100px" height="100px">
+                
+
+          </div>
+          <div class="p-1">
+            
+          </div>
+        </div>
+      </div>
+          <p class="mb-1 mt-2 text-center">Statistiques sur les élèves, le nombre d'élèves dans les deux campus de l'Eisti, mais également le nombre d'élèves par année scolaire tout campus confondus.</p>
+
+          <div class="d-flex justify-content-between">
+          <div class="p-1">
+          </div>
+          <div>
+                <section><a href="{% url 'statistiques:uni_programme' %}" class="text-center"><button type="button" class="btn btn-light btn-lg" style="font-size: 12px"> Cliquer ici pour accéder au statistiques</button></a>
+                </section>
+
+          </div>
+          <div class="p-1">
+            
+          </div>
+        </div>
+          
+        </div>
+      </div>
+          
+        </div>
+        
+      </div>
+      </div>
+    </div>
+    <div class="col-md">
+     <div class="container mt-4 mb-4">
+  <div class="list-group">
+    
+  <div href="#" class=" flex-column align-items-start ">
+    <div class="d-flex w-100 justify-content-between">
+      
+    </div>
+    <div class="card">
+  <div class="card-body">
+   <div class="" class="container">
+  <div class="d-flex justify-content-between">
+    <div class="p-1">
+    </div>
+    <div>
+          <img class="" id="image_file" src="{% static 'statistiques/IMAGES/quali.png'%}" alt="PNG" width="100px" height="100px">
+          
+
+    </div>
+    <div class="p-1">
+      
+    </div>
+  </div>
+</div>
+    <p class="mb-1 mt-2 text-center">Statistiques sur les élèves, comme le nombre d'élèves dans les programmes en fonction de l'année scolaire.</p>
+
+    <div class="d-flex justify-content-between">
+          <div class="p-1">
+          </div>
+          <div class="mt-4 ">
+                <section class=""><a href="{% url 'statistiques:quali_quali' %}" class="text-center "><button type="button" class="btn btn-light btn-lg " style="font-size: 12px"> Cliquer ici pour accéder au statistiques</button></a>
+                </section>
+
+          </div>
+          <div class="p-1">
+            
+          </div>
+        </div>
+  </div>
+</div>
+    
+  </div>
+  
+</div>
+</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="text-center">
+        <h2 class="mt-4 ">Statistiques sur les programmes</h2>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md">
+     <div class="container mt-4 mb-4">
+  <div class="list-group">
+    
+  <div href="#" class=" flex-column align-items-start ">
+    <div class="d-flex w-100 justify-content-between">
+      
+    </div>
+    <div class="card">
+  <div class="card-body">
+   <div class="" class="container">
+  <div class="d-flex justify-content-between">
+    <div class="p-1">
+    </div>
+    <div>
+          <img class="" id="image_file" src="{% static 'statistiques/IMAGES/coins.png'%}" alt="PNG" width="100px" height="100px">
+          
+
+    </div>
+    <div class="p-1">
+      
+    </div>
+  </div>
+</div>
+    <p class="mb-1 mt-2 text-center">Statistiques sur les programmes, comme le salaire moyen pour un stage en ING1, ING2 et ING3.</p>
+
+    <div class="d-flex justify-content-between">
+          <div class="p-1">
+          </div>
+          <div>
+                <section><a href="{% url 'statistiques:money_stage' %}" class="text-center"><button type="button" class="btn btn-light btn-lg" style="font-size: 12px"> Cliquer ici pour accéder au statistiques</button></a>
+                </section>
+
+          </div>
+          <div class="p-1">
+            
+          </div>
+        </div>
+  </div>
+</div>
+    
+  </div>
+  
+</div>
+</div>
+    </div>
+    <div class="col-md">
+            <div class="container mt-4 mb-4">
+        <div class="list-group">
+          
+        <div href="#" class=" flex-column align-items-start ">
+          <div class="d-flex w-100 justify-content-between">
+            
+          </div>
+          <div class="card">
+        <div class="card-body">
+         <div class="" class="container">
+        <div class="d-flex justify-content-between">
+          <div class="p-1">
+          </div>
+          <div>
+                <img class="" id="image_file" src="{% static 'statistiques/IMAGES/stage.png'%}" alt="PNG" width="100px" height="100px">
+                
+
+          </div>
+          <div class="p-1">
+            
+          </div>
+        </div>
+      </div>
+          <p class="mb-1 mt-2 text-center">Statistiques sur les programmes, quels sont les entreprises qui embauchent le mieux.</p>
+
+          <div class="d-flex justify-content-between">
+          <div class="p-1">
+          </div>
+          <div>
+                <section><a href="{% url 'statistiques:best_stage' %}" class="text-center"><button type="button" class="btn btn-light btn-lg" style="font-size: 12px"> Cliquer ici pour accéder au statistiques</button></a>
+                </section>
+
+          </div>
+          <div class="p-1">
+            
+          </div>
+        </div>
+          
+        </div>
+      </div>
+          
+        </div>
+        
+      </div>
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+
+
+
+
+    {% include 'accueil_login/footer.html' %}
+
+
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+{% load widget_tweaks %}
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Nous contacter</title>
+  <!-- UIkit CSS -->
+   <!--<link rel="stylesheet" type="text/css" href="{% static 'importationfichier/CSS/uikit.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'importationfichier/CSS/index.css' %}" />
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+
+  <script src="{% static 'importationfichier/JS/uikit.min.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.35/js/uikit-icons.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+ 
+  <script src="{% static 'importationfichier/JS/uikit-icons.min.js' %}"></script>
+    -->
+  <script src="{% static 'importationfichier/JS/index.js' %}"></script>
+  <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'importationfichier/bootstrap/css/bootstrap.css' %}">
+  <script src="{% static 'importationfichier/bootstrap/js/jquery.js' %}"></script>
+  <script src="{% static 'importationfichier/bootstrap/js/bootstrap.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'accueil_login/CSS/accueil.css' %}">
+  <link rel="stylesheet" href="{% static 'accueil_login/CSS/footer.css' %}">
+  <link rel="stylesheet" href="{% static 'nous_contacter/CSS/contact.css' %}">
+
+  </head>
+
+  <body>
+
+    {% include 'accueil_login/menu_utilisateur.html' %}
+
+
+	<div class="mt-4 mb-4" class="container">
+	  <div class="d-flex justify-content-between">
+	    <div class="p-1">
+	    </div>
+	    <div class="card mt-4 mb-4 px-5 py-4 bg-light">
+	        <h1 class="mb-4 text-center">Nous contacter</h1>
+				<form method="post">
+
+				    {% csrf_token %}
+				    <!--{{ form.as_p }}-->
+				    {% render_field form.subject class="form-control mb-4" placeholder="Sujet" %}
+				    {% render_field form.from_email class="form-control mb-4" placeholder="E-mail" %}
+				    {% render_field form.message class="form-control mb-4" placeholder="Message" %}
+
+					<div class="form-actions text-center">
+				      <button type="submit" class="btn btn-primary">Envoyer</button>
+				    </div>
+	    </div>
+	    <div class="p-1">
+	      
+	    </div>
+	  </div>
+	</div>
+
+
+  <!--<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <h3>Où sommes-nous ?</h3>
+      
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2646.2531389455903!2d-89.23024619999998!3d48.4516724!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4d5923dbfe697737%3A0xc9d925c9bc9573fa!2s116+Bruce+St%2C+Thunder+Bay%2C+ON+P7A+5W6!5e0!3m2!1sen!2sca!4v1424272264157" frameborder="0" style="border:0"></iframe>
+      </div></div></div>
+	-->
+
+    {% include 'accueil_login/footer.html' %}
+
+</body>
+</html>
+    
+    

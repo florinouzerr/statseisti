@@ -1,0 +1,212 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Statistiques</title>
+
+
+
+  
+
+	<link rel="stylesheet" type="text/css" href="{% static 'statistiques/CSS/index.css' %}" />
+  <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'statistiques/bootstrap/css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'statistiques/CSS/STATS/stats.css' %}">
+  <script src="{% static 'statistiques/bootstrap/js/jquery.js' %}"></script>
+  <script src="{% static 'statistiques/bootstrap/js/bootstrap.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+   <link rel="stylesheet" href="https://openlayers.org/en/v4.6.4/css/ol.css" type="text/css">
+   
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+   integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+   integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+   crossorigin=""></script>
+
+   <link rel="stylesheet" type="text/css" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.css" />
+    <link rel="stylesheet" type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/MarkerCluster.Default.css" />
+
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js'></script>
+    <script type='text/javascript' src='http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js'></script>
+    <script type='text/javascript' src='http://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/0.4.0/leaflet.markercluster.js'></script>
+</head>
+
+<style type="text/css">
+    font-family: "Lato", sans-serif;
+    transition: background-color .5s;    
+}
+</style>
+
+<body>
+	{% include 'accueil_login/menu_utilisateur.html' %}
+
+
+
+<div class="container mt-3" style="width: auto;">
+  <nav aria-label="breadcrumb ">
+  <ol class="breadcrumb " style=" background-color: #f8fbff; font-size: 13px">
+    <li class="breadcrumb-item text text-center"><a href="menu_stats">Menu statistiques</a></li>
+    <li class="breadcrumb-item active text-center" aria-current="page">Provenances élèves </li>
+  </ol>
+</nav>
+
+</div>
+
+
+
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-lg">
+      <div class="card card-inverse mb-3 text-center" >
+        <canvas id="bar-chart-horizontal" width="800" height="450"></canvas>
+          <div class="mt-2" class="container">
+            <div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <div class="container">
+          <label class="input-group-text" for="inputGroupSelect01" style="font-size: 10px;">Choisir le nombre de pays à afficher </label>
+
+    </div>
+  </div>
+  {% csrf_token %}
+  <select onchange="myFunction();" class="custom-select mr-2" id="inputGroupSelect01">
+
+    <option selected>...</option>
+    {% for tmp in labels_pays%}
+       <option selected value="{{forloop.counter}}">{{forloop.counter}}</option>       
+    {% endfor%}
+  </select>
+</div>
+
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+  
+      <div class="container mb-3">
+         <div>
+           <div class="row">
+             <div class="col-md">
+               <div id="mapid" style="height: 450px;"></div>
+             </div>
+           </div>
+         </div>
+      </div>   
+ {{oss|safe}}
+ <script type="text/javascript">
+
+   var mymap = L.map('mapid').setView([49.0349755, 2.0695911], 2);
+   L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZmxvcmlub3V6ZXJyIiwiYSI6ImNqYzk5ZjY3czBtbWkzM280empubW9rYnoifQ.PGXCsxw-kguymXs8Id0d1g', {
+    attribution: '',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'your.mapbox.access.token'
+    }).addTo(mymap);
+  var markersClusters = L.markerClusterGroup();
+  var cities_lon = {{oss_lon|safe}};
+  var cities_lat = {{oss_lat|safe}};
+  for (var i = 0; i < cities_lon.length; i++) {
+      var latLng = new L.LatLng(cities_lat[i],cities_lon[i] );
+      var marker = new L.Marker(latLng);
+      markersClusters.addLayer(marker);
+}
+ 
+mymap.addLayer(markersClusters);
+
+
+ </script>
+
+
+
+
+
+
+<script type="text/javascript">
+    var pays = Array();
+    var pays_tmp = {{labels_pays|safe}};
+    var valeurs = Array();
+    var valeurs_tmp = {{val_int_pays|safe}};
+    var colors = Array();
+    var colors_tmp = {{color_pays|safe}};
+    for (var i = 0; i < 10; i++) {
+      pays.push(pays_tmp[i]);
+      valeurs.push(valeurs_tmp[i]);
+      colors.push(colors_tmp[i]);
+    }
+  chats_js = new Chart(document.getElementById("bar-chart-horizontal"), {
+    type: 'horizontalBar',
+    data: {
+      labels: pays,
+      datasets: [
+        {
+          label: "Elèves ",
+          backgroundColor: colors,
+          data : valeurs
+        }
+      ]
+    },
+    options: {
+
+      legend: { display: false },
+      title: {
+        fontSize : 25,
+        display: true,
+        text: 'Pays de provenance des élèves'
+      }
+    }
+});
+
+
+function getCookie(cname) {
+     var name = cname + "=";
+     var ca = document.cookie.split(';');
+     for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if(c.indexOf(name) == 0)
+           return c.substring(name.length,c.length);
+     }
+     return "";
+}
+
+  function myFunction() {
+
+    
+    var selectElmt = document.getElementById("inputGroupSelect01");
+    var valeurselectionnee = selectElmt.options[selectElmt.selectedIndex].value;
+    var pays = Array();
+    var pays_tmp = {{labels_pays|safe}};
+    var valeurs = Array();
+    var valeurs_tmp = {{val_int_pays|safe}};
+    var colors = Array();
+    var colors_tmp = {{color_pays|safe}};
+    for (var i = 0; i < valeurselectionnee; i++) {
+      pays.push(pays_tmp[i]);
+      valeurs.push(valeurs_tmp[i]);
+      colors.push(colors_tmp[i]);
+    }
+    chats_js.data.datasets[0].data = valeurs;
+    chats_js.data.labels = pays;
+    chats_js.data.datasets[0].backgroundColor = colors;
+    chats_js.update();
+  }
+  
+
+  
+</script>
+
+
+{% include 'accueil_login/footer.html' %}
+
+
+</body>
+</html>

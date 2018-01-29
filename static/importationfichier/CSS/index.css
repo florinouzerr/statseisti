@@ -1,0 +1,17 @@
+#titre_principal {
+    font-family: 'Raleway', sans-serif;
+}
+
+#accordion1 {
+  background-color: #f2f2f2;
+}
+
+.boutons_info {
+  background-color: #5bc0de;
+  color: white;
+}
+
+#container_1 {
+  width: 100%;
+  margin: auto;
+}

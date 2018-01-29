@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Importation BDD</title>
+  <!-- UIkit CSS -->
+   <!--<link rel="stylesheet" type="text/css" href="{% static 'importationfichier/CSS/uikit.min.css' %}" />
+  <link rel="stylesheet" type="text/css" href="{% static 'importationfichier/CSS/index.css' %}" />
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet"> 
+
+  <script src="{% static 'importationfichier/JS/uikit.min.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-beta.35/js/uikit-icons.min.js"></script>
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8/jquery.min.js"></script>
+ 
+  <script src="{% static 'importationfichier/JS/uikit-icons.min.js' %}"></script>
+    -->
+    <link rel="stylesheet" type="text/css" href="{% static 'importationfichier/CSS/index.css' %}" />
+  <script src="{% static 'importationfichier/JS/index.js' %}"></script>
+  <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'importationfichier/bootstrap/css/bootstrap.css' %}">
+  <script src="{% static 'importationfichier/bootstrap/js/jquery.js' %}"></script>
+  <script src="{% static 'importationfichier/bootstrap/js/bootstrap.js' %}"></script>
+
+  </head>
+  <style>
+
+
+</style>
+  <style type="text/css">
+    body {
+      font-family: 'Maven Pro', sans-serif;
+    }
+  </style>
+
+  <body>
+
+
+      {% include 'accueil_login/menu_gestionnaire.html' %}
+
+
+
+
+<div class="mt-5" class="container">
+  <h2 class="text-center text-justify">Confirmation de suppression d'un fichier sur le serveur</h2>
+</div>
+{% if request.session.delete_file %}
+  <div class="container">
+    <div class="mt-4 alert alert-success" role="alert">
+    <h4 class="alert-heading">Fichier supprimé du serveur.</h4>
+    <p>le fichier a bien été supprimé du serveur.</p>
+    <hr>
+    <p class="mb-0">Cliquer <a href="../import_bdd">ici</a> pour revenir au importation de fichier.</p>
+      <p class="mb-0">Cliquer <a href="../nouveau_document">ici</a> pour importer un nouveau fichier sur le serveur.</p>
+
+    </div>
+  </div>
+  {% else %}
+  <div class="container">
+      <div class="mt-4 alert alert-danger" role="alert">
+      <h4 class="alert-heading">Fichier inexistant sur le serveur.</h4>
+      <p>le fichier n'a pas pu etre supprimé du serveur.</p>
+      <hr>
+      <p class="mb-0">Cliquer <a href="../import_bdd">ici</a> pour revenir au importation de fichier.</p>
+        <p class="mb-0">Cliquer <a href="../nouveau_document">ici</a> pour importer un nouveau fichier sur le serveur.</p>
+
+      </div>
+    </div>
+  {% endif %}
+
+{% include 'accueil_login/footer.html' %}
+</body>
+</html>
+    
+    

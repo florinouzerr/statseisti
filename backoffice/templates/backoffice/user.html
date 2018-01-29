@@ -1,0 +1,7 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'backoffice/style_user.css' %}" />
+
+<h2><u>L'utilisateur sélectioné a pour prénom {{ user_tmp.nom }}</u></h2>
+{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+

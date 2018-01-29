@@ -1,0 +1,72 @@
+{% extends 'accueil_login/base.html' %}
+
+{% block content %}
+
+{% load widget_tweaks %}
+{% load static %}
+
+
+  <div class="container_login">
+    <div class="info">
+      <h1> Logo Stats Eisti</h1>
+      <p> Bienvenue sur Stats Eisti </p>
+    </div>
+  </div> 
+
+  <div class="form">
+    <div class="thumbnail"><img src="{% static 'accueil_login/images/create-account.png' %}"></div>
+      <form method="post">
+        
+
+        <!--{% if error %}
+          <div class="invalid-feedback"> {{ error }} </div>
+        {% endif %}-->
+
+        {% csrf_token %}
+          
+          <!--<input id="id_username" type="text" name="username" placeholder="Nom d'utilisateur" maxlength="150" autofocus required />
+          <small class="form-text text-muted"> Requis. 150 caractères maximum. Uniquement des lettres, nombres et les caractères « @ », « . », « + », « - » et « _ ». </small>
+    
+          <input id="id_email" type="email" name="email" placeholder="Adresse e-mail" maxlength="200" required />
+          <small class="form-text text-muted"> Requis.</small>
+
+          <input id="id_password1" type="password" name="password1" placeholder="Mot de passe" required/>
+          <small class="form-text text-muted text-justify"><ul><li>Votre mot de passe ne peut pas trop ressembler à vos autres informations personnelles.</li><li>Votre mot de passe doit contenir au minimum 8 caractères.</li><li>Votre mot de passe ne peut pas être un mot de passe couramment utilisé.</li><li>Votre mot de passe ne peut pas être entièrement numérique.</li></ul></small>
+
+
+          <input id="id_password2" type="password" name="password2" placeholder="Confirmation du mot de passe" required/>
+          <small class="form-text text-muted">Saisissez le même mot de passe que précédemment, pour vérification.</small>-->
+
+
+        {% for field in form %}
+          <div class="form-group">
+            {{ field.label_tag }}
+
+            {% if form.is_bound %}
+              {% if field.errors %}
+                {% render_field field class="form-control is-invalid" %}
+                {% for error in field.errors %}
+                  <div class="invalid-feedback">
+                    {{ error }}
+                  </div>
+                {% endfor %}
+              {% else %}
+                {% render_field field class="form-control is-valid" %}
+              {% endif %}
+            {% else %}
+              {% render_field field class="form-control" %}
+            {% endif %}
+
+            {% if field.help_text %}
+              <small class="form-text text-muted">{{ field.help_text }}</small>
+            {% endif %}
+          </div>
+        {% endfor %}
+
+        <button type="submit">Créer un compte</button>
+
+        <p class="message">Déjà inscrit? <a href="{% url 'home' %}">Se connecter</a></p>
+      </form> 
+  </div>
+
+{% endblock %}

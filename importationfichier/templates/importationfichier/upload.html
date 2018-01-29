@@ -1,0 +1,69 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Upload de fichiers</title>
+<link rel="stylesheet" type="text/css" href="{% static 'importationfichier/CSS/index.css' %}" />
+  <script src="{% static 'importationfichier/JS/index.js' %}"></script>
+  <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'importationfichier/bootstrap/css/bootstrap.css' %}">
+  <script src="{% static 'importationfichier/bootstrap/js/jquery.js' %}"></script>
+  <script src="{% static 'importationfichier/bootstrap/js/bootstrap.js' %}"></script>
+</head>
+<style type="text/css">
+    body {
+      font-family: 'Maven Pro', sans-serif;
+    }
+  </style>
+<body>
+  
+    {% include 'accueil_login/menu_gestionnaire.html' %}
+
+
+ <div class="mt-5" class="container">
+  <h2 class="text-center text-justify">Confirmation de l'upload d'un fichier sur le serveur</h2>
+</div>
+
+  <div class="container" ">
+     <div class="mt-5" class="container">
+  <div class="d-flex justify-content-between">
+    <div class="p-1">
+    </div>
+    <div>
+          <img class="mr-3" id="image_file" src="{% static 'importationfichier/IMAGES/txt.png'%}" alt="PNG" width="75px" height="75px">
+          <img id="image_file" src="{% static 'importationfichier/IMAGES/csv.png'%}" alt="CSV" width="75px" height="75px">
+          <img class="ml-3" id="image_file" src="{% static 'importationfichier/IMAGES/xls.png'%}" alt="XLS" width="75px" height="75px">
+
+    </div>
+    <div class="p-1">
+      
+    </div>
+  </div>
+</div>
+    <hr>
+    {% if request.session.sauvegarde and name_file %}
+      <div class="alert alert-success" role="alert">
+        <h4 class="alert-heading">Importation réussie</h4>
+        <p>Nous avons bien réussi à importer le fichier sur le serveur.</p>
+        <hr>
+        <p class="mb-0">Cliquer <a href="import_bdd">ici</a> pour voir les importations de fichier.</p>
+        <p class="mb-0">Cliquer <a href="nouveau_document">ici</a> pour importer un nouveau fichier sur le serveur.</p>
+      </div>
+    {% else %}
+    <div class="alert alert-danger" role="alert">
+      <h4 class="alert-heading">Impossible d'importer le fichier</h4>
+      <p>Nous n'avons pas réussi à importer le fichier sur le serveur.</p>
+      <hr>
+      <p class="mb-0">Cliquer <a href="import_bdd">ici</a> pour voir les importations de fichier.</p>
+        <p class="mb-0">Cliquer <a href="nouveau_document">ici</a> pour importer un nouveau fichier sur le serveur.</p>
+    </div>
+    {% endif %}
+  </div>
+
+
+{% include 'accueil_login/footer.html' %}
+</body>
+</html>
+    
+    

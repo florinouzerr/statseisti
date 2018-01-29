@@ -1,0 +1,305 @@
+
+{% load static %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>A propos</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'statistiques/CSS/index.css' %}" />
+  <script src="{% static 'statistiques/JS/index.js' %}"></script>
+  <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'statistiques/bootstrap/css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'statistiques/CSS/STATS/stats.css' %}">
+  <script src="{% static 'statistiques/bootstrap/js/jquery.js' %}"></script>
+  <script src="{% static 'statistiques/bootstrap/js/bootstrap.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+   <link rel="stylesheet" href="https://openlayers.org/en/v4.6.4/css/ol.css" type="text/css">
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"
+   integrity="sha512-M2wvCLH6DSRazYeZRIm1JnYyh22purTM+FDB5CsyxtQJYeKq83arPe5wgbNmcFXGqiSH2XR8dT/fJISVA1r/zQ=="
+   crossorigin=""/>
+   <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"
+   integrity="sha512-lInM/apFSqyy1o6s89K4iQUKg6ppXEgsVxT35HbzUupEVRh2Eu9Wdl4tHj7dZO0s1uvplcYGmt3498TtHq+log=="
+   crossorigin=""></script>
+
+
+</head>
+
+<body>
+
+{% include 'accueil_login/menu_utilisateur.html' %}
+
+<div class="container">
+  <p class=""><h2> Qui sommes nous ?</h2></p>
+  <div class="row">
+    <div class="col-md dev">
+     <div class="container mt-4 mb-4">
+  <div class="list-group">
+
+  <div href="#" class=" flex-column align-items-start ">
+    <div class="d-flex w-100 justify-content-between">
+
+    </div>
+    <div class="card">
+  <div class="card-body">
+   <div class="" class="container">
+  <div class="d-flex justify-content-between">
+    <div class="p-1">
+    </div>
+    <div>
+
+            <img id="image_file"  src="{% static 'accueil_login/images/bear.png' %}" width="50px" height="50px">
+
+
+    </div>
+    <div class="p-1">
+
+    </div>
+  </div>
+</div>
+    <p class=" mb-1 mt-2 text-center">Florin Gogibus</p>
+
+    <div class="d-flex justify-content-between">
+          <div class="p-1">
+          </div>
+          <div>
+
+
+          </div>
+          <div class="p-1">
+
+          </div>
+        </div>
+  </div>
+</div>
+
+  </div>
+
+</div>
+</div>
+    </div>
+    <div class="col-md dev">
+     <div class="container mt-4 mb-4">
+  <div class="list-group">
+
+  <div href="#" class=" flex-column align-items-start ">
+    <div class="d-flex w-100 justify-content-between">
+
+    </div>
+    <div class="card">
+  <div class="card-body">
+   <div class="" class="container">
+  <div class="d-flex justify-content-between">
+    <div class="p-1">
+    </div>
+    <div>
+        <img id="image_file"  src="{% static 'accueil_login/images/penguin.png' %}" width="50px" height="50px">
+
+
+    </div>
+    <div class="p-1">
+
+    </div>
+  </div>
+</div>
+    <p class="mb-1 mt-2 text-center">Alexandre Hassan</p>
+
+    <div class="d-flex justify-content-between">
+          <div class="p-1">
+          </div>
+          <div>
+
+
+          </div>
+          <div class="p-1">
+
+          </div>
+        </div>
+  </div>
+</div>
+
+  </div>
+
+</div>
+</div>
+    </div>
+    <div class="col-md dev">
+            <div class="container mt-4 mb-4">
+        <div class="list-group">
+
+        <div href="#" class=" flex-column align-items-start ">
+          <div class="d-flex w-100 justify-content-between">
+
+          </div>
+          <div class="card">
+        <div class="card-body">
+         <div class="" class="container">
+        <div class="d-flex justify-content-between">
+          <div class="p-1">
+          </div>
+          <div>
+              <img id="image_file"  src="{% static 'accueil_login/images/deer.png' %}" width="50px" height="50px">
+
+
+          </div>
+          <div class="p-1">
+
+          </div>
+        </div>
+      </div>
+          <p class="mb-1 mt-2 text-center">Thomas Ogier</p>
+
+          <div class="d-flex justify-content-between">
+          <div class="p-1">
+          </div>
+          <div>
+
+
+          </div>
+          <div class="p-1">
+
+          </div>
+        </div>
+
+        </div>
+      </div>
+
+        </div>
+
+      </div>
+      </div>
+    </div>
+    <div class="col-md dev">
+     <div class="container mt-4 mb-4">
+  <div class="list-group">
+
+  <div href="#" class=" flex-column align-items-start ">
+    <div class="d-flex w-100 justify-content-between">
+
+    </div>
+    <div class="card">
+  <div class="card-body">
+   <div class="" class="container">
+  <div class="d-flex justify-content-between">
+    <div class="p-1">
+    </div>
+    <div>
+          <img id="image_file"  src="{% static 'accueil_login/images/husky.png' %}" width="50px" height="50px">
+
+
+    </div>
+    <div class="p-1">
+
+    </div>
+  </div>
+</div>
+    <p class="mb-1 mt-2 text-center">Caroline Ung </p>
+
+    <div class="d-flex justify-content-between">
+          <div class="p-1">
+          </div>
+          <div>
+
+
+          </div>
+          <div class="p-1">
+
+          </div>
+        </div>
+  </div>
+</div>
+
+  </div>
+
+</div>
+</div>
+    </div>
+
+
+
+  </div>
+  <div class="row">
+    <div class="col-md ap">
+     <div class="container mt-4 mb-4">
+  <div class="list-group">
+
+  <div href="#" class=" flex-column align-items-start ">
+    <div class="d-flex w-100 justify-content-between">
+
+    </div>
+    <div class="card">
+  <div class="card-body">
+   <div class="" class="container">
+  <div class="d-flex justify-content-between">
+    <div class="p-1">
+    </div>
+    <div>
+          <img class="" id="image_file" src="{% static 'accueil_login/images/logo.png'%}" alt="PNG" width="150px" height="150px">
+
+
+    </div>
+    <div class="p-1">
+
+    </div>
+  </div>
+</div>
+    <p class="mb-1 text-justify mx-4">Nous sommes des étudiants en informatique à l'EISTI sur le campus de Cergy, ce projet de développement web a consisté à créer un site repondant à de nombreux critères que nous avons essayé de respecter au maximum.
+    Nous avons voulu faire un site au design simple d'utilisation, compréhensible pour tous. Nous espérons que vous trouverez votre bonheur sur StatS EISTI !</p>
+
+    <div class="d-flex justify-content-between">
+          <div class="p-1">
+          </div>
+          <div>
+
+
+          </div>
+          <div class="p-1">
+
+          </div>
+        </div>
+  </div>
+</div>
+
+  </div>
+
+</div>
+</div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container mb-3">
+   <div>
+     <div class="row">
+       <div class="col-md ">
+         <div id="mapid" style="height: 450px; width : 70%; margin-left : 16% "></div>
+       </div>
+     </div>
+   </div>
+</div>
+<script type="text/javascript">
+  var mymap = L.map('mapid').setView([49.0349755, 2.0695911], 16);
+L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoiZmxvcmlub3V6ZXJyIiwiYSI6ImNqYzk5ZjY3czBtbWkzM280empubW9rYnoifQ.PGXCsxw-kguymXs8Id0d1g', {
+    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox.streets',
+    accessToken: 'your.mapbox.access.token'
+}).addTo(mymap);
+var marker = L.marker([49.0349755, 2.0695911]).addTo(mymap);
+marker.bindPopup("<b>EISTI - Campus de Cergy</b> <i><br>Avenue du Parc<br>95011 Cergy - Pontoise</i>").openPopup();
+
+
+
+
+</script>
+
+
+
+  {% include 'accueil_login/footer.html' %}
+  </body>
+  </html>

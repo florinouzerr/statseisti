@@ -1,0 +1,40 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>{% block title %}Confirmation{% endblock %}</title>
+
+    <script src="{% static 'importationfichier/JS/index.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'importationfichier/bootstrap/css/bootstrap.css' %}">
+    <script src="{% static 'importationfichier/bootstrap/js/jquery.js' %}"></script>
+    <script src="{% static 'importationfichier/bootstrap/js/bootstrap.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'accueil_login/CSS/accueil.css' %}">
+    <link rel="stylesheet" href="{% static 'accueil_login/CSS/footer.css' %}">
+
+</head>
+<body>
+
+    
+
+<div class="container">
+  <div class="d-flex justify-content-between">
+    <div class="p-1">
+    </div>
+    <div class="card mt-5 mb-5 px-5 py-5">
+      Vous avez reçu un message à l'adresse e-mail renseignée. Veuillez le consulter pour terminer l'inscription. </br>
+      Si vous n’avez pas reçu notre e-mail, pensez à consulter vos courriers indésirables et votre corbeille. </br>
+      Si vous n'arrivez toujours pas à recevoir l’email de validation, veuillez <a href="#">nous contacter</a> afin de modifier l'adresse email reliée à votre compte.
+
+    </div>
+    <div class="p-1">
+      
+    </div>
+  </div>
+</div>
+  {% include 'accueil_login/footer.html' %}
+
+</body>
+</html>

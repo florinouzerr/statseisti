@@ -1,0 +1,191 @@
+{% load static%}
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Statistiques</title>
+
+	<link rel="stylesheet" type="text/css" href="{% static 'statistiques/CSS/index.css' %}" />
+  <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="{% static 'statistiques/bootstrap/css/bootstrap.css' %}">
+  <link rel="stylesheet" href="{% static 'statistiques/CSS/STATS/stats.css' %}">
+  <script src="{% static 'statistiques/bootstrap/js/jquery.js' %}"></script>
+  <script src="{% static 'statistiques/bootstrap/js/bootstrap.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.bundle.js"></script>
+
+
+
+
+</head>
+<style type="text/css">
+  body {
+    font-family: "Lato", sans-serif;
+    transition: background-color .5s;
+}
+
+
+</style>
+<body>
+
+  {% include 'accueil_login/menu_utilisateur.html' %}
+  <!--
+	<nav class="navbar-expand-lg navbar navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">Stats Eisti</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+    <ul class="navbar-nav text-md-center nav-justified w-100">
+      
+      
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Importer fichiers</a>
+      </li>
+      
+      
+      <li class="nav-item active dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Mon compte 
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Mes informations</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'deconnexion' %}">Se déconnecter</a>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>
+-->
+<!-- MENU -->
+
+
+<!-- MENU 1 -->
+
+
+
+<div class="container mt-3" style="width: auto;">
+  <nav aria-label="breadcrumb ">
+  <ol class="breadcrumb " style=" background-color: #f8fbff; font-size: 13px">
+    <li class="breadcrumb-item text text-center"><a href="menu_stats">Menu statistiques</a></li>
+    <li class="breadcrumb-item active text-center" aria-current="page">Nombre élèves campus </li>
+  </ol>
+</nav>
+
+</div>
+
+<div class="container mt-2">
+  <div class="row">
+    <div class="col-lg">
+      <div class="card card-inverse mb-3 text-center" >
+        <canvas id="pie-chart0" ></canvas>
+          <div class="mt-2" class="container">
+            <div class="d-flex justify-content-between">
+              <div class="p-1">
+              </div>
+                <div>
+                  <div class=" card border-info mb-3" style="width: 18rem;">
+                    <div class="card-body">
+                      <p class="card-text text-center">
+                        Nombre d'élèves au total : {{total_eleve}} <br>
+                        {{total_cergy}} <br>
+                       {{total_pau}} <br>
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              <div class="p-1">
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="col-lg">
+      <div class="card card-inverse mb-3 text-center" >
+      <canvas id="bar-chart0" ></canvas>
+      <div class="mt" class="container">
+        <div class="d-flex justify-content-between">
+          <div class="p-1">
+          </div>
+            <div>
+              <div class=" card border-info mb-3" style="display : none;width: 18rem;">
+                <div class="card-body">
+                  <p class="card-text">Nombre d'élèves au total :</p>
+                </div>
+              </div>
+            </div>
+          <div class="p-1">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+
+</div>
+
+
+
+
+
+<script type="text/javascript">
+  new Chart(document.getElementById("pie-chart0"), {
+    type: 'pie',
+    data: {
+      labels: {{labels_campus|safe}},
+      datasets: [
+        {
+          backgroundColor: {{color_campus|safe}},
+          data: {{ donnees_campus}}
+        }
+      ]
+    },
+    options: {
+      responsive : true,
+      maintainAspectRatio : true,
+
+      title: {
+        fontSize : 25,
+        display: true,
+        text: "Pourcentages d'élèves à Pau et Cergy",
+      }
+    }
+});
+</script>
+
+
+<script type="text/javascript">
+  new Chart(document.getElementById("bar-chart0"), {
+    type: 'bar',
+    data: {
+      labels: {{labels_annee_scolaire|safe}},
+      datasets: [
+        {
+          backgroundColor: {{color_annee_scolaire|safe}},
+          data: {{ donnees_annee_scolaire}}
+        }
+      ]
+    },
+    options: {
+      legend: { display: false },
+
+      responsive : true,
+      maintainAspectRatio : true,
+
+      title: {
+
+        fontSize : 25,
+        display: true,
+        text: "Nombre d'élèves par année scolaire",
+      }
+    }
+});
+</script>
+
+
+
+</body>
+</html>
