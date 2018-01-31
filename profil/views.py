@@ -5,7 +5,9 @@ from django.contrib.auth.models import User
 from django.views.generic import UpdateView
 from .forms import EditProfilForm
 from django.contrib.auth.forms import UserChangeForm
-
+from django.contrib.auth.models import User, Group
+from accueil_login.views import home
+from django.contrib.auth.models import User, Group
 
 def user_profil(request):
 	if request.method == "POST":
@@ -26,15 +28,24 @@ def edit_user(request):
 
 	
 
-def pageprofil(request):
-	if request.method == 'POST':
-		form = EditProfilForm(request.POST, instance=request.user)
+def pageprofil(request): 
+	
+	if request.user.is_authenticated :
+		user = User.objects.get(pk=request.user.id)	
+		if request.method == 'POST':
+			form = EditProfilForm(request.POST, instance=request.user)
 
-		if form.is_valid():
-			form.save()
-			return redirect('profil:pageprofil')
-		return render(request, 'profil/pageprofil.html')
-	else:
-		form = EditProfilForm(instance=request.user)
-		args = {'form': form}
-		return render(request, 'profil/pageprofil.html', args)
+			if form.is_valid():
+				form.save()
+				return redirect('profil:pageprofil')
+			return render(request, 'profil/pageprofil.html')
+		else:
+			form = EditProfilForm(instance=request.user)
+			args = {'form': form, 'user' : user.username}
+			return render(request, 'profil/pageprofil.html', args)
+
+		
+	else :
+		return redirect(home)
+
+	
